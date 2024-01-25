@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<int> v;
+stack<int> im;
+
+int main()
+{
+    int n, i;
+    
+    cin >> n;
+    v.resize(n);
+    
+    for(auto& i : v)
+    {
+        cin >> i;
+    }
+    
+    for(i = 0; i < n; i ++)
+    {
+        while(im.empty() == false and v[i] <= v[im.top()])
+        {
+            im.pop();
+        }
+        
+        if(im.empty() == true)
+        {
+            cout << 0 << ' ';
+        }
+        else
+        {
+            cout << im.top() + 1 << ' ';
+        }
+        
+        im.push(i);
+    }
+    return 0;
+}
